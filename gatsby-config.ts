@@ -1,21 +1,23 @@
-require(`dotenv`).config()
+import type { GatsbyConfig, PluginRef } from "gatsby"
+import "dotenv/config"
 
 const shouldAnalyseBundle = process.env.ANALYSE_BUNDLE
 
-module.exports = {
+const config: GatsbyConfig = {
   siteMetadata: {
     // You can overwrite values here that are used for the SEO component
     // You can also add new values here to query them like usual
-    // See all options: https://github.com/LekoArts/gatsby-themes/blob/main/themes/gatsby-theme-cara/gatsby-config.js
-    siteTitle: `Andrew Hulterstrom`,
-    siteTitleAlt: `Andrew Hulterstrom Portfolio`,
-    siteHeadline: `Andrew Hulterstrom Portfolio`,
-    siteUrl: `https://andrewhulterstrom.com`,
-    siteDescription: `A portfolio site for Andrew Hulterstrom`,
-    siteLanguage: `en`,
+    // See all options: https://github.com/LekoArts/gatsby-themes/blob/main/themes/gatsby-theme-cara/gatsby-config.mjs
+    siteTitle: `Cara`,
+    siteTitleAlt: `Cara - Gatsby Starter Portfolio`,
+    siteHeadline: `Cara - Gatsby Theme from @lekoarts`,
+    siteUrl: `https://cara.lekoarts.de`,
+    siteDescription: `Playful and Colorful One-Page portfolio featuring Parallax effects and animations`,
     siteImage: `/banner.jpg`,
-    author: `@ahulterstrom`,
+    siteLanguage: `en`,
+    author: `@lekoarts_de`,
   },
+  trailingSlash: `always`,
   plugins: [
     {
       resolve: `@lekoarts/gatsby-theme-cara`,
@@ -57,5 +59,7 @@ module.exports = {
         open: false,
       },
     },
-  ].filter(Boolean),
+  ].filter(Boolean) as Array<PluginRef>,
 }
+
+export default config
